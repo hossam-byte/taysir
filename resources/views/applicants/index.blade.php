@@ -18,9 +18,9 @@
         <form action="{{ route('applicants.search') }}" method="POST" class="mb-5 bg-light p-4 rounded-3 border">
             @csrf
             <h5 class="mb-3 text-dark"><i class="fa-solid fa-magnifying-glass text-primary"></i> ابحث عن حالة بالرقم القومي (للتحقق من التسجيل المسبق)</h5>
-            <div class="input-group input-group-lg" dir="ltr">
-                <button class="btn btn-primary px-4" type="submit" id="button-addon1">بحث</button>
-                <input type="text" name="national_id" class="form-control text-end border-primary" placeholder="أدخل الرقم القومي المكون من 14 رقم" aria-label="National ID" required>
+            <div class="input-group input-group-lg">
+                <input type="text" dir="ltr" name="national_id" class="form-control text-center border-primary" placeholder="أدخل الرقم القومي المكون من 14 رقم" aria-label="National ID" required>
+                <button class="btn btn-primary px-5 fw-bold" type="submit" id="button-addon1">بحث</button>
             </div>
         </form>
 
