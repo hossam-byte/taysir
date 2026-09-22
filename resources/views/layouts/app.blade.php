@@ -107,6 +107,31 @@
             .sidebar-backdrop.active {
                 display: block;
             }
+            
+            /* Responsive tweaks */
+            #content {
+                padding: 10px;
+            }
+            .card {
+                margin-bottom: 1rem;
+            }
+            .card-header, .card-body {
+                padding: 1rem !important;
+            }
+            .form-control, .form-select {
+                font-size: 1rem;
+                padding: 0.5rem 0.75rem;
+            }
+            .btn {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+            h3 {
+                font-size: 1.25rem !important;
+            }
+            h5 {
+                font-size: 1.1rem !important;
+            }
         }
         
         .mobile-toggle {
