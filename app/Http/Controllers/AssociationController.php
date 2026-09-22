@@ -40,4 +40,43 @@ class AssociationController extends Controller
 
         return redirect()->route('associations.index')->with('success', 'تم إضافة الجمعية بنجاح.');
     }
+
+    public function edit(Association $association)
+    {
+        Gate::authorize('super_admin');
+        return view('associations.edit', compact('association'));
+    }
+
+    public function update(Request $request, Association $association)
+    {
+        Gate::authorize('super_admin');
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:associations,name,' . $association->id,
+            'contact_number' => 'nullable|string',
+            'address' => 'nullable|string',
+            'logo' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,webp,bmp|max:5120',
+        ]);
+
+        if ($request->hasFile('logo')) {
+            if ($association->logo) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($association->logo);
+            }
+            $validated['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
+        $association->update($validated);
+
+        return redirect()->route('associations.index')->with('success', 'تم تعديل بيانات الجمعية بنجاح.');
+    }
+
+    public function destroy(Association $association)
+    {
+        Gate::authorize('super_admin');
+        if ($association->logo) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($association->logo);
+        }
+        $association->delete();
+        return redirect()->route('associations.index')->with('success', 'تم حذف الجمعية بنجاح.');
+    }
 }

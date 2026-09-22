@@ -25,6 +25,7 @@
                         <th class="py-3 text-center">رقم التواصل</th>
                         <th class="py-3 text-center">عدد الحالات</th>
                         <th class="py-3 text-center">عدد الموظفين</th>
+                        <th class="py-3 text-center">الإجراءات</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,10 +49,13 @@
                         <td class="text-center">
                             <span class="badge bg-primary fs-6 rounded-pill px-3">{{ $association->users_count }}</span>
                         </td>
+                        <td class="text-center">
+                            <a href="{{ route('associations.edit', $association->id) }}" class="btn btn-sm btn-outline-info fw-bold"><i class="fa-solid fa-pen me-1"></i> تعديل</a>
+                        </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="6" class="text-center py-5 text-muted fs-5">لا توجد جمعيات مسجلة حتى الآن.</td>
+                        <td colspan="7" class="text-center py-5 text-muted fs-5">لا توجد جمعيات مسجلة حتى الآن.</td>
                     </tr>
                     @endforelse
                 </tbody>

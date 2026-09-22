@@ -20,17 +20,18 @@
                 <thead class="table-light text-secondary">
                     <tr>
                         <th class="py-3">الاسم</th>
-                        <th class="py-3">رقم الهاتف (الدخول)</th>
-                        <th class="py-3">الجمعية التابع لها</th>
+                        <th class="py-3 text-center">رقم الهاتف (الدخول)</th>
+                        <th class="py-3 text-center">الجمعية التابع لها</th>
                         <th class="py-3 text-center">تاريخ الإضافة</th>
+                        <th class="py-3 text-center">الإجراءات</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($users as $user)
                     <tr>
                         <td class="fw-bold fs-5 text-dark"><i class="fa-solid fa-user text-muted me-2"></i> {{ $user->name }}</td>
-                        <td dir="ltr" class="text-end fw-bold">{{ $user->phone }}</td>
-                        <td>
+                        <td dir="ltr" class="text-center fw-bold">{{ $user->phone }}</td>
+                        <td class="text-center">
                             @if($user->association)
                                 <span class="badge bg-info text-white fs-6"><i class="fa-solid fa-building me-1"></i> {{ $user->association->name }}</span>
                             @else
@@ -40,10 +41,13 @@
                         <td class="text-center text-muted" dir="ltr">
                             {{ $user->created_at->format('Y-m-d') }}
                         </td>
+                        <td class="text-center">
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-outline-dark fw-bold"><i class="fa-solid fa-pen me-1"></i> تعديل</a>
+                        </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="4" class="text-center py-5 text-muted fs-5">لا يوجد موظفين مسجلين للجمعيات حتى الآن.</td>
+                        <td colspan="5" class="text-center py-5 text-muted fs-5">لا يوجد موظفين مسجلين للجمعيات حتى الآن.</td>
                     </tr>
                     @endforelse
                 </tbody>
