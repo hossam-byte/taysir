@@ -8,7 +8,7 @@
                 <h3 class="text-primary font-weight-bold mb-0"><i class="fa-solid fa-users"></i> الحالات المسجلة</h3>
             </div>
             <div class="col-md-6 text-md-end mt-3 mt-md-0">
-                <a href="{{ route('applicants.create') }}" class="btn btn-primary btn-lg shadow-sm">
+                <a href="{{ route('applicants.create') }}" class="btn btn-primary btn-lg shadow-sm d-block d-md-inline-block">
                     <i class="fa-solid fa-plus me-1"></i> تسجيل حالة جديدة
                 </a>
             </div>
@@ -18,14 +18,18 @@
         <form action="{{ route('applicants.search') }}" method="POST" class="mb-5 bg-light p-4 rounded-3 border">
             @csrf
             <h5 class="mb-3 text-dark"><i class="fa-solid fa-magnifying-glass text-primary"></i> ابحث عن حالة بالرقم القومي (للتحقق من التسجيل المسبق)</h5>
-            <div class="input-group input-group-lg">
-                <input type="text" dir="ltr" name="national_id" class="form-control text-center border-primary" placeholder="أدخل الرقم القومي المكون من 14 رقم" aria-label="National ID" required>
-                <button class="btn btn-primary px-5 fw-bold" type="submit" id="button-addon1">بحث</button>
+            <div class="row g-2">
+                <div class="col-12 col-md-9">
+                    <input type="text" dir="ltr" name="national_id" class="form-control form-control-lg text-center border-primary" placeholder="أدخل الرقم القومي المكون من 14 رقم" aria-label="National ID" required>
+                </div>
+                <div class="col-12 col-md-3">
+                    <button class="btn btn-primary btn-lg w-100 fw-bold" type="submit" id="button-addon1">بحث</button>
+                </div>
             </div>
         </form>
 
         <div class="table-responsive">
-            <table class="table table-hover align-middle">
+            <table class="table table-hover align-middle text-nowrap">
                 <thead class="table-light text-secondary">
                     <tr>
                         <th class="py-3">الاسم</th>
